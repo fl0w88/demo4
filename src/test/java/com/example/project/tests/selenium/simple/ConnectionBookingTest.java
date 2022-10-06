@@ -1,4 +1,4 @@
-package com.example.project.tests;
+package com.example.project.tests.selenium.simple;
 
 import com.example.project.helper.Waiter;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -33,6 +33,7 @@ public class ConnectionBookingTest {
         driver.get("https://shop.oebbtickets.at/en/ticket");
         Waiter waiter = new Waiter();
 
+        // enter start / destination
         By by = By.xpath("//input[contains(@data-unique-id, 'travelStationFromInput')]");
         WebElement element = waiter.wait(driver, by);
         element.sendKeys("Wien Hbf (U)");
@@ -53,7 +54,7 @@ public class ConnectionBookingTest {
         element = waiter.wait(driver, by);
         element.click();
 
-        // verify a timetable is returned
+        // verify if a valid timetable is returned
         by = By.xpath("//timetable-connection");
         waiter.wait(driver, by);
     }

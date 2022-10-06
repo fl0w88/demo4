@@ -1,4 +1,4 @@
-package com.example.project.taf.tests;
+package com.example.project.helper;
 
 import com.example.project.keywords.Base64App;
 import org.junit.jupiter.api.AfterEach;

@@ -12,9 +12,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class ConnectionBookingTestSteps {
 
@@ -42,34 +39,17 @@ public class ConnectionBookingTestSteps {
 
     @And("^I search for a journey from (.+) to (.+)$")
     public void searchForJourney(String departure, String arrival) {
-        By by = By.xpath("//input[contains(@data-unique-id, 'travelStationFromInput')]");
-        WebElement element = waiter.wait(driver, by);
-        element.sendKeys(departure);
-        waiter.wait1s();
-        element.sendKeys(Keys.ENTER);
-
-        by = By.xpath("//input[contains(@data-unique-id, 'travelStationToInput')]");
-        element = waiter.wait(driver, by);
-        element.sendKeys(arrival);
-        waiter.wait1s();
-        element.sendKeys(Keys.ENTER);
+       // TO DO
     }
 
     @When("^I click on the find connections button$")
     public void clickButton() {
-        By by = By.xpath("//button[contains(@data-unique-id, 'travelFindServicesSplitButton')]");
-        WebElement element = waiter.wait(driver, by);
-        element.click();
-
-        by = By.xpath("//button[contains(@data-unique-id, 'timetable')]");
-        element = waiter.wait(driver, by);
-        element.click();
+        // TO DO
     }
 
     @Then("^I receive a valid result list$")
     public void checkResult() {
-        By by  = By.xpath("//timetable-connection");
-        waiter.wait(driver, by);
+        // TO DO
     }
 
 }
