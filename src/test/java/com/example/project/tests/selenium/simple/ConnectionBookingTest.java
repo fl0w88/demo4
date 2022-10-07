@@ -3,6 +3,7 @@ package com.example.project.tests.selenium.simple;
 import com.example.project.helper.Waiter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -19,6 +20,7 @@ public class ConnectionBookingTest {
     public void setupTest() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     @AfterEach
@@ -33,12 +35,15 @@ public class ConnectionBookingTest {
         driver.get("https://shop.oebbtickets.at/en/ticket");
         Waiter waiter = new Waiter();
 
+
         // enter start / destination
         By by = By.xpath("//input[contains(@data-unique-id, 'travelStationFromInput')]");
         WebElement element = waiter.wait(driver, by);
         element.sendKeys("Wien Hbf (U)");
         waiter.wait1s();
         element.sendKeys(Keys.ENTER);
+
+        Assertions.assertEquals("Tickets and Services", driver.getTitle());
 
         by = By.xpath("//input[contains(@data-unique-id, 'travelStationToInput')]");
         element = waiter.wait(driver, by);

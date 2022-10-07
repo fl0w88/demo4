@@ -18,6 +18,7 @@ public class Base64Test extends TestCaseBase {
 
         String textToEncode = "muster";
         String actualResult = b64App().base64Keywords().encodeText(textToEncode);
+
         String expectedResult = Base64.getEncoder().encodeToString(textToEncode.getBytes());
 
         Assertions.assertEquals(expectedResult, actualResult);
