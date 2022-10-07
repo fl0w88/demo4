@@ -1,5 +1,6 @@
 package com.example.project.tests.taf;
 
+import com.example.project.data.Base64DataProvider;
 import com.example.project.helper.TestCaseBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +17,9 @@ public class Base64Test extends TestCaseBase {
 
         b64App().base64Keywords().closeCookies();
 
-        String textToEncode = "muster";
+        Base64DataProvider franz = new Base64DataProvider();
+        String textToEncode = franz.getTestData().getText();
+        // String textToEncode = "muster";
         String actualResult = b64App().base64Keywords().encodeText(textToEncode);
 
         String expectedResult = Base64.getEncoder().encodeToString(textToEncode.getBytes());
