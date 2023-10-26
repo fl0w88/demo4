@@ -5,15 +5,15 @@ import org.junit.jupiter.api.AfterEach;
 
 public class TestCaseBase {
 
-    private final Base64App b64 = new Base64App();
+    private final Base64App base64App = new Base64App();
 
-    public Base64App b64App() {
-        return b64;
+    public Base64App base64App() {
+        return base64App;
     }
 
     @AfterEach
     public void tearDown() {
-        b64.base64Keywords().close();
+        base64App.base64Keywords().close();
     }
 
 }

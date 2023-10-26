@@ -1,6 +1,5 @@
 package com.example.project.tests.taf;
 
-import com.example.project.data.Base64DataProvider;
 import com.example.project.helper.TestCaseBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,15 +12,14 @@ public class Base64Test extends TestCaseBase {
     @Test
     @DisplayName("Base64 encoding - via keywords")
     public void testBase64Conversion() {
-        b64App().base64Keywords().openBase64Site();
+        base64App().base64Keywords().openBase64Site();
 
-        b64App().base64Keywords().closeCookies();
+        base64App().base64Keywords().closeCookies();
 
-        Base64DataProvider franz = new Base64DataProvider();
-        String textToEncode = franz.getTestData().getText();
-        // String textToEncode = "muster";
-        String actualResult = b64App().base64Keywords().encodeText(textToEncode);
+        String textToEncode = "Example text that we will encode";
+        String actualResult = base64App().base64Keywords().encodeText(textToEncode);
 
+        // Java Base64 conversion
         String expectedResult = Base64.getEncoder().encodeToString(textToEncode.getBytes());
 
         Assertions.assertEquals(expectedResult, actualResult);

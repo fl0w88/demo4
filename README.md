@@ -16,7 +16,7 @@ This project has a very abstract and lightweight structure of what test automati
 ## Tasks
 
 1. Run the [ConnectionBookingTest](src/test/java/com/example/project/tests/selenium/simple/ConnectionBookingTest.java)
-   and extend it by a title check: verify that the title of the page is "Tickets and Services"
+   and extend it by a title check: verify that the title of the page is "Tickets & Services"
 2. Perform the train connection booking via
    BDD/Cucumber: [train_connection_booking.feature](src/test/resources/cucumber/train_connection_booking.feature)
    (hint: fill

@@ -1,7 +1,6 @@
 package com.example.project.tests.selenium.simple;
 
 import com.example.project.helper.Waiter;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +17,6 @@ public class ConnectionBookingTest {
 
     @BeforeEach
     public void setupTest() {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
@@ -43,25 +41,13 @@ public class ConnectionBookingTest {
         waiter.wait1s();
         element.sendKeys(Keys.ENTER);
 
-        Assertions.assertEquals("Tickets and Services", driver.getTitle());
+        // 1. TODO: überprüfe den Titel der Seite mit Assertions.assertEquals(...)
+        // Tipp: Offizielle Selenium Doku ist hier:
+        // https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
 
-        by = By.xpath("//input[contains(@data-unique-id, 'travelStationToInput')]");
-        element = waiter.wait(driver, by);
-        element.sendKeys("Salzburg");
-        waiter.wait1s();
-        element.sendKeys(Keys.ENTER);
+        // 2. TODO: prüfe ob es gültige Verbindungen/Ergebnisse gibt nach Salzburg
 
-        by = By.xpath("//button[contains(@data-unique-id, 'travelFindServicesSplitButton')]");
-        element = waiter.wait(driver, by);
-        element.click();
 
-        by = By.xpath("//button[contains(@data-unique-id, 'timetable')]");
-        element = waiter.wait(driver, by);
-        element.click();
-
-        // verify if a valid timetable is returned
-        by = By.xpath("//timetable-connection");
-        waiter.wait(driver, by);
     }
 
 }

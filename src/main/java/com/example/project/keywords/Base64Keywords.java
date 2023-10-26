@@ -1,6 +1,5 @@
 package com.example.project.keywords;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -18,13 +17,13 @@ public class Base64Keywords {
     private static WebDriverWait wait = null;
 
     private void init() {
-        WebDriverManager.chromedriver().setup();
+        // WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     public void close() {
-        driver.close();
+        driver.quit();
     }
 
     public Base64Keywords() {
@@ -34,6 +33,7 @@ public class Base64Keywords {
     public void openBase64Site() {
         init();
         driver.get("https://www.base64encode.org/");
+        driver.manage().window().maximize();
     }
 
     public void closeCookies() {

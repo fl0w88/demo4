@@ -2,10 +2,8 @@ Feature: Encode base 64
 
   Scenario Outline: Encode base64 <toEncode>
     Given I am on the base64 homepage
-    And I accept the cookie policy
-    When I enter a <toEncode> to encode
-    Then I receive a valid <result>
+    # continue here
 
     Examples:
-      | toEncode | result |
-      | abc      | YWJj   |
+      | toEncode | expectedResult |
+      | test123  | dGVzdDEyMw==   |
