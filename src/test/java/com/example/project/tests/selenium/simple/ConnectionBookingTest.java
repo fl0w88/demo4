@@ -24,7 +24,7 @@ public class ConnectionBookingTest {
     @AfterEach
     public void teardown() {
         if (driver != null) {
-            driver.quit();
+            //driver.quit();
         }
     }
 
@@ -32,7 +32,6 @@ public class ConnectionBookingTest {
     public void testBookConnection() {
         driver.get("https://shop.oebbtickets.at/en/ticket");
         Waiter waiter = new Waiter();
-
 
         // enter start / destination
         By by = By.xpath("//input[contains(@data-unique-id, 'travelStationFromInput')]");
@@ -44,10 +43,25 @@ public class ConnectionBookingTest {
         // 1. TODO: überprüfe den Titel der Seite mit Assertions.assertEquals(...)
         // Tipp: Offizielle Selenium Doku ist hier:
         // https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
+        Assertions.assertEquals("Tickets & Services", driver.getTitle());
 
         // 2. TODO: prüfe ob es gültige Verbindungen/Ergebnisse gibt nach Salzburg
+        by = By.xpath("//input[contains(@data-unique-id, 'travelStationToInput')]");
+        element = waiter.wait(driver, by);
+        element.sendKeys("Salzburg");
+        waiter.wait1s();
+        element.sendKeys(Keys.ENTER);
 
+        by = By.xpath("//button[contains(@data-unique-id, 'travelFindServicesSplitButton')]");
+        element = waiter.wait(driver, by);
+        element.click();
 
+        by = By.xpath("//button[contains(@data-unique-id, 'timetable')]");
+        element = waiter.wait(driver, by);
+        element.click();
+
+        by = By.xpath("//timetable-connection");
+        element = waiter.wait(driver, by);
     }
 
 }
