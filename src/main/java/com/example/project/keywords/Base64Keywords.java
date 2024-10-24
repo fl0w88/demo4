@@ -1,5 +1,6 @@
 package com.example.project.keywords;
 
+import com.example.project.helper.Waiter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -41,7 +42,7 @@ public class Base64Keywords {
         wait.until(elementToBeClickable(inputFrom));
         WebElement element = driver.findElement(inputFrom);
         element.click();
-        waitALittle();
+        Waiter.wait1s();
     }
 
     public String encodeText(String text) {
@@ -54,7 +55,7 @@ public class Base64Keywords {
         wait.until(elementToBeClickable(buttonSubmitBy));
         element = driver.findElement(buttonSubmitBy);
         element.sendKeys(Keys.ENTER);
-        waitALittle();
+        Waiter.wait1s();
 
         By output = By.id("output");
         wait.until(elementToBeClickable(output));
@@ -62,11 +63,5 @@ public class Base64Keywords {
         return element.getText();
     }
 
-    public static void waitALittle() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+
 }
